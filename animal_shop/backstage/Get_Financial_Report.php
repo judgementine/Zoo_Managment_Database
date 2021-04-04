@@ -1,7 +1,11 @@
 <?php
 session_start();
 ?>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
 FinancialReport <?php
 // define variables and set to empty values
@@ -46,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $server->close();
 
   }
-  
+  header("Location: GeneratedReport.html")
 
 }
 
@@ -70,9 +74,7 @@ function test_input($data) {
     <td>Total Revenue<td>
 </tr>
 <?php
-   $i = 0;
    while ($row = mysql_fetch_array($sql)) {
-       $class = ($i == 0) ? "" : "alt";
        echo "<tr class=\"".$class."\">";
        echo "<td>".$row[Month]."</td>";
        echo "<td>".$row[Quarter]."</td>";
@@ -82,7 +84,6 @@ function test_input($data) {
        echo "<td>".$row[Expenses]."</td>";
        echo "<td>".$row[Total Revenue]."</td>";
        echo "</tr>";
-       $i = ($i==0) ? 1:0;
    }
 
 ?>
