@@ -3,12 +3,12 @@ session_start();
 ?>
 <html>
 <body>
-AnimalReport <?php
+ShopReport <?php
 // define variables and set to empty values
 $month = $quarter = $year = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $animalID = test_input($_POST["animalID"]);
+  $animalID = test_input($_POST["shopID"]);
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $server = mysql_connect($servername,$username, $password);
   // Check connection
   if ($server->connect_error) {
-    header("Location: AnimalReport.html");
+    header("Location: shopReport.html");
     die("Connection failed: " . $conn->connect_error);
     exit;
   }

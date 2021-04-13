@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $month = test_input($_POST["month"]);
   $quarter = test_input($_POST["quarter"]);
   $year = test_input($_POST["year"]);
-
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -74,7 +73,7 @@ function test_input($data) {
     <td>Total Revenue<td>
 </tr>
 <?php
-   while ($row = mysql_fetch_array($sql)) {
+   while ($row = mysql_fetch_array($result)) {
        echo "<tr class=\"".$class."\">";
        echo "<td>".$row[Month]."</td>";
        echo "<td>".$row[Quarter]."</td>";
