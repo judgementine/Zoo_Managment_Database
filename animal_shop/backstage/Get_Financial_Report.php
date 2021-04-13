@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $month = test_input($_POST["month"]);
   $quarter = test_input($_POST["quarter"]);
   $year = test_input($_POST["year"]);
+
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   }
   header("Location: GeneratedReport.html")
-
+  exit;
 }
 
 function test_input($data) {
