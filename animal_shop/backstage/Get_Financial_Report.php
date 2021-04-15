@@ -16,6 +16,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $quarter = test_input($_POST["quarter"]);
   $year = test_input($_POST["year"]);
 
+  
+  if ($month!="")
+  {
+     $sql = "SELECT $month, $quarter, $year FROM Finance";
+  }
+  else if($quarter!="")
+  {
+    $sql = "SELECT $quarter, $year FROM Finance";
+
+  }
+  else
+  {
+    $sql = "SELECT $year FROM Finance";
+
+  }
+
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -31,20 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   else{
   $db =  mysql_select_db("$dbname,$server");
-  if ($month!="")
-  {
-     $sql = "SELECT $month, $quarter, $year FROM Finance";
-  }
-  else if($quarter!="")
-  {
-    $sql = "SELECT $quarter, $year FROM Finance";
-
-  }
-  else
-  {
-    $sql = "SELECT $year FROM Finance";
-
-  }
   $result = $server->mysql_query($sql);
   
   $server->close();

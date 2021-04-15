@@ -19,13 +19,41 @@
     <div class="layui-card">
         <div class="layui-card-header">Generate Shop Sales Report</div>
         <div class="layui-card-body">
-
+                <h1>Fill out any categories that Apply</h1>
             <form class="layui-form" action="Get_Shop_Sales_Report.php">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">Enter Shop ID</label>
+                    <label class="layui-form-label">Department Number:</label>
                     <div class="layui-input-block">
                         <input type="hidden" name="id">
-                        <input type="text" name="shopID" required lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="dno" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Location</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id">
+                        <input type="text" name="location" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Type of Shops</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id">
+                        <input type="text" name="shopType" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Type of Attractions</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id">
+                        <input type="text" name="attractionType" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Schedule</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id">
+                        <input type="text" name="schedule" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">

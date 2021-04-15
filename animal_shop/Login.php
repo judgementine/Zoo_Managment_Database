@@ -32,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION['password']=$password;
       $_SESSION['servername']=$servername;
       $_SESSION['dbname']= $dbname
+      
+    header("Location: AdminMainPage.html")
   }
 ?>
 <body>
