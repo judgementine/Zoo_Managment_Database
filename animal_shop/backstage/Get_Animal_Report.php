@@ -9,6 +9,12 @@ $month = $quarter = $year = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $animalID = test_input($_POST["animalID"]);
+  $Animal_species = test_input($_POST["Animal_species"]);
+  $animal_DOB = test_input($_POST["animal_DOB"]);
+  $Breeding = test_input($_POST["Breeding"]);
+
+
+    
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -24,14 +30,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   else{
   $db =  mysql_select_db("$dbname,$server");
-  $sql = "SELECT $animalID FROM animal";
+  
+      if ($animalID != ""){
+          $sql = "SELECT $animalID, $Animal_species, $animal_DOB, $Breeding FROM animal";
+      }
+      else if($Animal_species != ""){
+          $sql = "SELECT $Animal_species, $animal_DOB, $Breeding FROM animal";
+      }
+      else if($animal_DOB != ""){
+          $sql = "SELECT $animal_DOB, $Breeding FROM animal";
+      }
+      else {
+          $sql = "SELECT $Breeding FROM animal";"
+          
+      }
+      
 
   $result = $server->mysql_query($sql);
   
   $server->close();
 
   }
-  
+    header("Location: GeneratedReport.html")
+    exit;
 
 }
 
@@ -43,10 +64,38 @@ function test_input($data) {
 }
 ?>
 
+<h1>Generated Animal Report<h1>
+<table class="striped">
+<tr class="header">
+    <td>enclosure_ID</td>
+    <td>feeding</td>
+    <td>Animal_species </td>
+    <td>Sub_species<td>
+    <td>animal_DOB<td>
+    <td>Health<td>
+    <td>Breeding <td>
+    <td>spec_instructions <td>
+
+</tr>
+
+
+
+
+
+
 <?php
-    $row = mysql_fetch_array($sql)
-       echo "<h1>Animal Number".$animalID"<h1>";
-   }
+    while ($row = mysql_fetch_array($result)) {
+        echo "<tr class=\"".$class."\">";
+        echo "<td>".$row[enclosure_ID]."</td>";
+        echo "<td>".$row[feeding]."</td>";
+        echo "<td>".$row[Animal_species]."</td>";
+        echo "<td>".$row[Sub_species]."</td>";
+        echo "<td>".$row[animal_DOB]."</td>";
+        echo "<td>".$row[Health]."</td>";
+        echo "<td>".$row[Breeding]."</td>";
+        echo "<td>".$row[spec_instructions]."</td>";
+        echo "</tr>";
+    }
 
 ?>
 </table>
