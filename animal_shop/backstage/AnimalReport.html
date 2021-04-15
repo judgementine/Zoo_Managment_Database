@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="layui-card">
-        <div class="layui-card-header">Get Animal Report</div>
+        <div class="layui-card-header">Generate Animal Report</div>
         <div class="layui-card-body">
 
             <form class="layui-form" action="Get_Animal_Report.php">
@@ -24,14 +24,68 @@
                     <label class="layui-form-label">Enter Animal Tag Number</label>
                     <div class="layui-input-block">
                         <input type="hidden" name="id">
-                        <input type="text" name="animalID"  required lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="animalID" 
+                        autocomplete="off" class="layui-input">
                     </div>
+                
+                
+                
                 </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="userForm">Generate</button>
+                
+                <div class = "layui-form-item">
+                <label class = "layui-form-item"> Enter Animal Species</label>
+                <div class = "layui-input-block"></div>
+                    <input type = "text" name="Animal_species" required lay-verify="required"
+                    autocomplete="off" class = "layui-input">
+                </div>
+                            
+                </div>
+                
+                <div class = "layui-form-item">
+                <label class = "layui-form-item"> Enter Animal DOB</label>
+                <div class = "layui-input-block"></div>
+                    <input type = "text" name="animal_DOB" 
+                    autocomplete="off" class = "layui-input">
+                </div>
+
+                </div>
+                
+                <div class = "layui-form-item">
+                <label class = "layui-form-item"> Enter Animal Breeding</label>
+                <div class = "layui-input-block"></div>
+                    <input type = "text" name="Breeding" 
+                    autocomplete="off" class = "layui-input">
+                </div>
+                
+                
+                
+                </div>
+                
+                <div class = "layui-form-item">
+                <label class = "layui-form-item"> Animals Base On The Attraction</label>
+                <div class = "layui-input-block"></div>
+                    <input type = "text" name="Attractions" 
+                       autocomplete="off" class = "layui-input">
+                </div>
+                
+                
+                </div>
+                 <input type = "checkbox" id = exhibition >
+                    <label for ="exhibition"> Is the animal on exhibit?</label1><br>
+                
+                </div>
+     
+                </div>
+                <div class = "layui-form-item">
+                    <div class = "layui-input-block">
+                        <button class = "layui-btn" lay-submit lay-filter = "userForm" >Generate</button>
+                        
                     </div>
+                    
                 </div>
+                
+                
+                
             </form>
 
         </div>

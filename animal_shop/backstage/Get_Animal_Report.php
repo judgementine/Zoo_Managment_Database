@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Animal_species = test_input($_POST["Animal_species"]);
   $animal_DOB = test_input($_POST["animal_DOB"]);
   $Breeding = test_input($_POST["Breeding"]);
+    $Attractions = test_input($_POST["Attractions"]);
 
 
     
@@ -32,19 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $db =  mysql_select_db("$dbname,$server");
   
       if ($animalID != ""){
-          $sql = "SELECT $animalID, $Animal_species, $animal_DOB, $Breeding FROM animal";
+          $sql = "SELECT $animalID, $Animal_species, $animal_DOB, $Breeding, Attractions_site FROM animal";
       }
       else if($Animal_species != ""){
-          $sql = "SELECT $Animal_species, $animal_DOB, $Breeding FROM animal";
+          $sql = "SELECT $Animal_species, $animal_DOB, $Breeding,Attractions_site FROM animal";
       }
       else if($animal_DOB != ""){
-          $sql = "SELECT $animal_DOB, $Breeding FROM animal";
+          $sql = "SELECT $animal_DOB, $Breeding,Attractions_site FROM animal";
       }
-      else {
-          $sql = "SELECT $Breeding FROM animal";"
+      else if{
+          $sql = "SELECT $Breeding,Attractions_site FROM animal";
           
       }
-      
+      else {
+          $sql = "SELECT Attractions_site FROM animal";
+      }
+     
 
   $result = $server->mysql_query($sql);
   
@@ -75,6 +79,8 @@ function test_input($data) {
     <td>Health<td>
     <td>Breeding <td>
     <td>spec_instructions <td>
+    <td>Attractions_site <td>
+
 
 </tr>
 
@@ -94,6 +100,7 @@ function test_input($data) {
         echo "<td>".$row[Health]."</td>";
         echo "<td>".$row[Breeding]."</td>";
         echo "<td>".$row[spec_instructions]."</td>";
+        echo "<td>".$row[Attractions_site]."</td>";
         echo "</tr>";
     }
 
