@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $db =  mysql_select_db("$dbname,$server");
   
       if ($animalID != ""){
-          $sql = "SELECT $animalID, $Animal_species, $animal_DOB, $Breeding, Attractions_site FROM animal";
+          $sql = "SELECT * FROM animal WHERE '{$animalID}', '{$Animal_species}', '{$animal_DOB}', '{$Breeding}', '{$Attractions_site}'";
       }
       else if($Animal_species != ""){
-          $sql = "SELECT $Animal_species, $animal_DOB, $Breeding,Attractions_site FROM animal";
+          $sql = "SELECT {$Animal_species, $animal_DOB, $Breeding,Attractions_site FROM animal";
       }
       else if($animal_DOB != ""){
           $sql = "SELECT $animal_DOB, $Breeding,Attractions_site FROM animal";
