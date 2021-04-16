@@ -8,10 +8,12 @@ session_start();
 </head>
 <body>
 
-        <?php
-            $username, $password = "";
+<?php
+
+$username, $password = "";
+$employeeType = ""; // 1:Admin 2:Zookeeper 3:Acccountant
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = test_input($_POST["musername"]);
+    $username = test_input($_POST["username"]);
     $password = test_input($_POST["password"]);
     
     
@@ -28,12 +30,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   else
   {
-      $_SESSION['username']=$username;
-      $_SESSION['password']=$password;
-      $_SESSION['servername']=$servername;
-      $_SESSION['dbname']= $dbname
-      
-    header("Location: AdminMainPage.html")
+    $_SESSION['username']=$username;
+    $_SESSION['password']=$password;
+    $_SESSION['servername']=$servername;
+    $_SESSION['dbname']= $dbname;
+    
+    $sql = "SELECT displayType FROM Users WHERE username = '{$username}'";
+    $result = $server->query($sql);
+
+    if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        if ($row["displayType"]. == 1) {
+          header("Location: AdminMainPage.html");
+        }
+        elseif ($row["displayType"]. == 2) {
+          header("Location: ZookeeperMainPage.html"); 
+        }
+        elseif ($row["displayType"]. == 3) {
+          header("Location: AccountantMainPage.html"); 
+        }
+      }
+    }
+
+
   }
 ?>
 <body>
