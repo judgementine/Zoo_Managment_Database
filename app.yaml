@@ -4,8 +4,8 @@ threadsafe: true
 
 handlers:
 - url: /
-  static_files: website/index.html
-  upload: website/index.html
+  static_files: animal_shop/AdminMainPage.html
+  upload: animal_shop/AdminMainPage.html
 
 - url: /
-  static_dir: website
+  static_dir: animal_shop
