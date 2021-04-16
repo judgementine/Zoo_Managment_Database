@@ -1,9 +1,7 @@
 {
     
    
-   "require": {
-        "monolog/monolog": "1.0.*"
-    }
+  
     
     "firstName": "Rack",
     "lastName": "jackson",
