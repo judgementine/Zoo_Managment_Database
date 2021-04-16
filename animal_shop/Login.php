@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
   // Check connection
   if ($server->connect_error) {
-    header("Location: FinancialReport.html");
+    header("Location: login.html");
     die("Connection failed: " . $conn->connect_error);
     exit;
   }

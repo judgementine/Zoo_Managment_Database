@@ -17,20 +17,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $year = test_input($_POST["year"]);
 
   
-  if ($month!="")
+  if ($month=="")
   {
-     $sql = "SELECT $month, $quarter, $year FROM Finance";
+    $month = "*";
   }
-  else if($quarter!="")
+ if($quarter=="")
   {
-    $sql = "SELECT $quarter, $year FROM Finance";
+    $quarter == "*";
 
   }
-  else
+  if($year == "")
   {
-    $sql = "SELECT $year FROM Finance";
+    $year = "*"
 
   }
+    $sql = "SELECT * FROM Finance WHERE month ='{$month}', quarter = '{$quarter}', year ='{$year}'";
 
   $servername = "localhost";
   $username = "username";

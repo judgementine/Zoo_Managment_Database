@@ -60,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($attractionType=="")$attractionType="*";
     if($schedule=="")$schedule="*";
 
-    $sql1 = "SELECT $dname, $location, $shopType, $schedule FROM Shops"
-    $sql2 = "SELECT $dname, $location, $shopType, $schedule FROM Shops"
+    $sql1 = "SELECT  FROM Shops WHERE Dname '{$dname}', Location = '{$location}', ShopType = '{$shopType}', Schedule = '{$schedule}'"
+    $sql2 = "SELECT  FROM Attractions WHERE Dname= '{$dname}', Location = '{$location}', AttractionType = '{$attractionType}', Schedule = '{$schedule}'"
 
   $result1 = $server->mysql_query($sql1);
   $result2 = $server->mysql_query($sql2);
