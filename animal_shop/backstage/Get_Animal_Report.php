@@ -1,7 +1,11 @@
 <?php
 session_start();
 ?>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
 AnimalReport <?php
 // define variables and set to empty values
@@ -12,9 +16,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Animal_species = test_input($_POST["Animal_species"]);
   $animal_DOB = test_input($_POST["animal_DOB"]);
   $Breeding = test_input($_POST["Breeding"]);
-    $Attractions = test_input($_POST["Attractions"]);
+    $Attractions = test_input($_POST["Attractions_Site"]);
 
+    if ($animalID=="")
+    {
+      $animalID = "*";
+    }
+   if($Animal_species=="")
+    {
+      $Animal_species == "*";
 
+    }
+    if($animal_DOB == "")
+    {
+      $animal_DOB = "*"
+
+    }
+    if($Breeding == "")
+    {
+      $Breeding = "*"
+
+    }
+    if($Attractions_Site == "")
+    {
+      $Attractions_Site = "*"
+
+    }
+      $sql = "SELECT * FROM animal WHERE animalID ='{animalID}', Animal_species = '{$Animal_species}', animal_DOB ='{$animal_DOB}',Breeding ='{$Breeding},Attractions_Site ='{$Attractions_Site} ";
+    
+    
+    
+    
+    
+    
     
   $servername = "localhost";
   $username = "username";
