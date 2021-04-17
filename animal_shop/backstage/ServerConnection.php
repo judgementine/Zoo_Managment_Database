@@ -9,12 +9,12 @@
 <?php
 
 $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
-$username = "username";
-$password = "password";
-$dbname = "myDB";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "zoo-database";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=mydb", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
