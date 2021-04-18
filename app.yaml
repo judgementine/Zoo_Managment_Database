@@ -1,4 +1,4 @@
-runtime: python27
+runtime: php55
 api_version: 1
 threadsafe: true
 
@@ -9,3 +9,60 @@ handlers:
 
 - url: /
   static_dir: animal_shop
+
+   url: /animal_shop
+   script: login.php
+
+  url: /animal_shop/backstage
+  script: Get_Financial_Report.php
+
+  url: /animal_shop/backstage
+  script: Get_Animal_Report.php
+  
+  url: /animal_shop/backstage
+  script: Get_Shop_Report-1.php
+  
+  url: /animal_shop/backstage
+  script: ServerConnection.php
+
+  url: /animal_shop/backstage
+  script: conn.php
+
+  url: /animal_shop/backstage
+  script: index.php
+  
+  url: /animal_shop/backstage/components/animal
+  script: SanimalAddDo.php
+  
+  url: /animal_shop/backstage/components/animal
+  script: index.php
+  
+  url: /animal_shop/backstage/components/customer
+  script: customerAddDo.php
+  
+  url: /animal_shop/backstage/components/customer
+  script: index.php
+  
+  url: /animal_shop/backstage/components/department
+  script: departmentAddDo.php
+  
+  url: /animal_shop/backstage/components/department
+  script: index.php
+  
+  url: /animal_shop/backstage/components/employee
+  script: employeeAddDo.php
+  
+  url: /animal_shop/backstage/components/employee
+  script: index.php
+  
+  url: /animal_shop/backstage/components/finance
+  script: financeAddDo.php
+  
+  url: /animal_shop/backstage/components/finance
+  script: index.php
+  
+  url: /animal_shop/backstage/components/shops
+  script: shopsAddDo.php
+  
+  url: /animal_shop/backstage/components/shops
+  script: index.php
