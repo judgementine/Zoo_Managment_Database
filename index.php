@@ -7,7 +7,15 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/login.php':
         require 'animal_shop/login.php';
         break;
-        
+    case '/AccountantMainPage.html':
+        require 'animal_shop/AccountantMainPage.html';
+        break;
+    case '/AdminMainPage.html':
+        require 'animal_shop/AdminMainPage.html';
+        break;
+    case '/ZookeeperMainPage.html':
+        require 'animal_shop/AdminMainPage.html';
+        break;
     case '/ServerConnection.php':
         require 'animal_shop/ServerConnection.php';
         break;
@@ -18,47 +26,44 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/test.php':
         require 'animal_shop/test.php';
         break;
-    case '/backstage/Get_Financial_Report.php':
-        require 'backstage/Get_Financial_Report.php';
-        break;
     case '/Get_Financial_Report.php':
-        require 'backstage/Get_Financial_Report.php';
+        require 'animal_shop/backstage/Get_Financial_Report.php';
         break;
-    case '/backstage/Get_Shop_Report.php':
-        require 'backstage/Get_Shop_Report.php';
+    case '/backstage/Get_Financial_Report.php':
+        require 'animal_shop/backstage/Get_Financial_Report.php';
         break;
     case '/Get_Shop_Report.php':
-        require 'backstage/Get_Shop_Report.php';
+        require 'animal_shop/backstage/Get_Shop_Report.php';
         break;
-    case '/backstage/Get_Animal_Report.php':
-        require 'backstage/Get_Animal_Report.php';
+    case '/backstage/Get_Shop_Report.php':
+        require 'animal_shop/backstage/Get_Shop_Report.php';
         break;
     case '/Get_Animal_Report.php':
-        require 'backstage/Get_Animal_Report.php';
+        require 'animal_shop/backstage/Get_Animal_Report.php';
+        break;
+    case '/backstage/Get_Animal_Report.php':
+        require 'animal_shop/backstage/Get_Animal_Report.php';
         break;
     case '/backstage/index.php':
-        require 'backstage/login.php';
-        break;
-    case '/backstage/index.php':
-        require 'backstage/login.php';
-        break;
-    case '/backstage/ServerConnection.php':
-        require 'backstage/ServerConnection.php';
-        break;
-    case '/backstage/conn.php':
-        require 'backstage/conn.php';
+        require 'animal_shop/backstage/index.php';
         break;
     case '/conn.php':
-        require 'backstage/conn.php';
+        require 'animal_shop/backstage/conn.php';
         break;
-    case '/backstage/conn.php':
-        require 'backstage/conn.php';
+    case '/animalAddDo.php':
+        require 'animal_shop/backstage/components/animal/animalAddDo.php';
         break;
-    case '/backstage/components/animal/animalAddDo.php':
-        require 'backstage/components/animal/animalAddDo.php';
+    case 'financeAddDo.php':
+        require 'animal_shop/backstage/components/finance/financeAddDo.php';
         break;
-    case '/backstage/components/finance/financeAddDo.php':
-        require 'backstage/components/finance/financeAddDo.php';
+    case 'customerAddDo.php':
+        require 'animal_shop/backstage/components/customer/customerAddDo.php';
+        break;
+    case 'departmentAddDo.php':
+        require 'animal_shop/backstage/components/department/departmentAddDo.php';
+        break;
+    case 'employeeAddDo.php':
+        require 'animal_shop/backstage/components/employee/employeeAddDo.php';
         break;
     default:
         http_response_code(404);
