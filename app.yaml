@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 runtime: php72
  
+
 
 handlers:
 
@@ -98,3 +100,5 @@ handlers:
   script: auto
 
 entrypoint: login.html
+
+
