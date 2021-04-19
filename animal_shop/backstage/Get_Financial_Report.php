@@ -7,9 +7,22 @@ session_start();
     <title>Title</title>
 </head>
 <body>
-FinancialReport <?php
+<?php
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    echo "<script type='text/javascript'> document.location = 'login.html'; </script>";
+    exit;
+}
+else{
 // define variables and set to empty values
-$month = $quarter = $year = "";
+$month = "";
+$quarter = "";
+$year = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $month = test_input($_POST["month"]);
@@ -31,8 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year = "*"
 
   }
-    $sql = "SELECT * FROM Finance WHERE month ='{$month}', quarter = '{$quarter}', year ='{$year}'";
+$sql = "SELECT * FROM Finance WHERE month ='$month', quarter = '$quarter', year ='$year'";
 
+<<<<<<< Updated upstream
   $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
   $username = "admin";
   $password = "T3Am9Pasw0rd$";
@@ -47,14 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
   else{
+=======
+>>>>>>> Stashed changes
   $db =  mysql_select_db("$dbname,$server");
   $result = $server->mysql_query($sql);
   
   $server->close();
 
   }
-  header("Location: GeneratedReport.html")
-  exit;
 }
 
 function test_input($data) {

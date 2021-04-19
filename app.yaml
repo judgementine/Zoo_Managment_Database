@@ -6,6 +6,13 @@ handlers:
 - url: /(.+\.(gif|png|jpg|css|js|map|PNG))$
   static_files: \1
   upload: .+\.(gif|png|jpg|css|js|map|PNG)$
+<<<<<<< Updated upstream
+=======
+  
+- url: /image/jaguars-zoo.jpg
+  static_files: animal_shop/image/jaguars-zoo.jpg
+  upload: animal_shop/image/jaguars-zoo.jpg
+>>>>>>> Stashed changes
 
 - url: /
   static_files: animal_shop/login.html
@@ -18,6 +25,25 @@ handlers:
 - url: /
   static_files: animal_shop/AccountantMainPage.html
   upload: animal_shop/AccountantMainPage.html
+<<<<<<< Updated upstream
+=======
+  
+- url: /
+  static_files: AccountantMainPage.html
+  upload: AccountantMainPage.html
+
+- url: /
+  static_files: animal_shop/backstage/EmployeeRegistration.html
+  upload: animal_shop/backstage/EmployeeRegistration.html
+  
+- url: /
+  static_files: backstage/EmployeeRegistration.html
+  upload: backstage/EmployeeRegistration.html
+  
+- url: /
+  static_files: EmployeeRegistration.html
+  upload: EmployeeRegistration.html
+>>>>>>> Stashed changes
 
 - url: /
   static_files: animal_shop/ZookeeperMainPage.html

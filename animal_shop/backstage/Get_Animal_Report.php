@@ -7,9 +7,21 @@ session_start();
     <title>Title</title>
 </head>
 <body>
-AnimalReport <?php
+<?php
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
+else{
 // define variables and set to empty values
-$month = $quarter = $year = "";
+$month = "";
+$quarter = "";
+$year = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $animalID = test_input($_POST["animalID"]);
@@ -42,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $Attractions_Site = "*"
 
     }
-      $sql = "SELECT * FROM animal WHERE animalID ='{animalID}', Animal_species = '{$Animal_species}', animal_DOB ='{$animal_DOB}',Breeding ='{$Breeding},Attractions_Site ='{$Attractions_Site} ";
+      $sql = "SELECT * FROM animal WHERE animalID ='$animalID', Animal_species = '$Animal_species', animal_DOB ='$animal_DOB', Breeding ='$Breeding', Attractions_Site ='$Attractions_Site' ";
     
     
     
@@ -50,20 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     
-  $servername = "localhost";
-  $username = "username";
-  $password = "password";
-  $dbname = "myDB";
- 
-  // Create connection
-  $server = mysql_connect($servername,$username, $password);
-  // Check connection
-  if ($server->connect_error) {
-    header("Location: AnimalReport.html");
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-  }
-  else{
   $db =  mysql_select_db("$dbname,$server");
   
       if ($animalID != ""){

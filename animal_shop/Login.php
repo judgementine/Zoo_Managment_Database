@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($row["password"] == $password)
     {
         if ($row["employee_type"] == 0) {
+<<<<<<< Updated upstream
           header("Location: AdminMainPage.html");
           exit;
         }
@@ -30,6 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         elseif ($row["employee_type"] == 2) {
           header("Location: AccountantMainPage.html"); 
+=======
+          echo "<script type='text/javascript'> document.location = 'AdminMainPage.html'; </script>";
+          exit;
+        }
+        elseif ($row["employee_type"] == 1) {
+          echo "<script type='text/javascript'> document.location = 'ZookeeperMainPage.html'; </script>";
+          exit;
+        }
+        elseif ($row["employee_type"] == 2) {
+          echo "<script type='text/javascript'> document.location = 'AccountantMainPage.html'; </script>";
+>>>>>>> Stashed changes
           exit;
         }
     }
