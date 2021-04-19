@@ -13,11 +13,11 @@ session_start();
 $username, $password = "";
 $employeeType = ""; // 1:Admin 2:Zookeeper 3:Acccountant
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = test_input($_POST["username"]);
-    $password = test_input($_POST["password"]);
+    $username = $_POST["username"];
+    $password = $_POST["password"];
     
     
-    $servername = "localhost";
+    $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
     $dbname = "myDB";
     // Create connection
     $server = mysql_connect($servername,$username, $password);

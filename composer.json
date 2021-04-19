@@ -1,3 +1,4 @@
+
 {
     
    
@@ -16,4 +17,8 @@
     "phoneNumbers": [
         { "type": "home", "number": "7383627627" }
     ]
+    ,"require" : {
+        "php" : ">=7.2",
+        "ext-mbstring": "*"
+    }
 }

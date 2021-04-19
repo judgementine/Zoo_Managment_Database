@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
     $sql = "SELECT * FROM Finance WHERE month ='{$month}', quarter = '{$quarter}', year ='{$year}'";
 
-  $servername = "localhost";
-  $username = "username";
-  $password = "password";
+  $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
+  $username = "admin";
+  $password = "T3Am9Pasw0rd$";
   $dbname = "myDB";
  
   // Create connection

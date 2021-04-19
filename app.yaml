@@ -1,11 +1,100 @@
-runtime: python27
-api_version: 1
-threadsafe: true
+runtime: php72
+ 
 
 handlers:
+
+- url: /
+  static_files: animal_shop/login.html
+  upload: animal_shop/login.html
+
 - url: /
   static_files: animal_shop/AdminMainPage.html
   upload: animal_shop/AdminMainPage.html
 
 - url: /
-  static_dir: animal_shop
+  static_files: animal_shop/backstage/FinancialReport.html
+  upload: animal_shop/backstage/FinancialReport.html
+  
+- url: /
+  static_files: backstage/FinancialReport.html
+  upload: backstage/FinancialReport.html
+
+- url: /
+  static_files: backstage/AnimalReport.html
+  upload: backstage/AnimalReport.html
+
+- url: /
+  static_files: backstage/ShopReport.html
+  upload: backstage/ShopReport.html
+  
+- url: /
+  static_files: backstage/index.html
+  upload: backstage/index.html
+  
+- url: /animal_shop/login.php
+  script: auto
+  
+- url: /login.php
+  script: auto
+  
+- url: /animal_shop/backstage/Get_Financial_Report.php
+  script: auto
+  
+- url: /Get_Financial_Report.php
+  script: auto
+
+- url: /animal_shop/backstage/Get_Financial_Report.php
+  script: auto
+
+- url: /animal_shop/backstage/Get_Animal_Report.php
+  script: auto
+  
+- url: /animal_shop/backstage/Get_Shop_Report-1.php
+  script: auto
+  
+- url: /animal_shop/backstage/ServerConnection.php
+  script: auto
+
+- url: /animal_shop/backstage/conn.php
+  script: auto
+
+- url: /animal_shop/backstage/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/animal/animalAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/animal/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/customer/customerAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/customer/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/department/departmentAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/department/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/employee/employeeAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/employee/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/finance/financeAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/finance/index.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/shops/shopsAddDo.php
+  script: auto
+  
+- url: /animal_shop/backstage/components/shops/index.php
+  script: auto
+
+entrypoint: login.html
