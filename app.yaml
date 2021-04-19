@@ -1,9 +1,11 @@
-<<<<<<< HEAD
 runtime: php72
  
 
-
 handlers:
+
+- url: /(.+\.(gif|png|jpg|css|js|map|PNG))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg|css|js|map|PNG)$
 
 - url: /
   static_files: animal_shop/login.html
@@ -12,6 +14,14 @@ handlers:
 - url: /
   static_files: animal_shop/AdminMainPage.html
   upload: animal_shop/AdminMainPage.html
+
+- url: /
+  static_files: animal_shop/AccountantMainPage.html
+  upload: animal_shop/AccountantMainPage.html
+
+- url: /
+  static_files: animal_shop/ZookeeperMainPage.html
+  upload: animal_shop/ZookeeperMainPage.html
 
 - url: /
   static_files: animal_shop/backstage/FinancialReport.html
@@ -33,72 +43,5 @@ handlers:
   static_files: backstage/index.html
   upload: backstage/index.html
   
-- url: /animal_shop/login.php
+- url: /.*
   script: auto
-  
-- url: /login.php
-  script: auto
-  
-- url: /animal_shop/backstage/Get_Financial_Report.php
-  script: auto
-  
-- url: /Get_Financial_Report.php
-  script: auto
-
-- url: /animal_shop/backstage/Get_Financial_Report.php
-  script: auto
-
-- url: /animal_shop/backstage/Get_Animal_Report.php
-  script: auto
-  
-- url: /animal_shop/backstage/Get_Shop_Report-1.php
-  script: auto
-  
-- url: /animal_shop/backstage/ServerConnection.php
-  script: auto
-
-- url: /animal_shop/backstage/conn.php
-  script: auto
-
-- url: /animal_shop/backstage/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/animal/animalAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/animal/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/customer/customerAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/customer/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/department/departmentAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/department/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/employee/employeeAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/employee/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/finance/financeAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/finance/index.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/shops/shopsAddDo.php
-  script: auto
-  
-- url: /animal_shop/backstage/components/shops/index.php
-  script: auto
-
-entrypoint: login.html
-
-

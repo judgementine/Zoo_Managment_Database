@@ -1,59 +1,47 @@
 <?php
-session_start();
-?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-<?php
-
-$username, $password = "";
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
+else{
+$username = "";
+$password = "";
 $employeeType = ""; // 1:Admin 2:Zookeeper 3:Acccountant
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    
-    
-    $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
-    $dbname = "myDB";
-    // Create connection
-    $server = mysql_connect($servername,$username, $password);
-    
-  // Check connection
-  if ($server->connect_error) {
-    header("Location: login.html");
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-  }
-  else
-  {
-    $_SESSION['username']=$username;
-    $_SESSION['password']=$password;
-    $_SESSION['servername']=$servername;
-    $_SESSION['dbname']= $dbname;
-    
-    $sql = "SELECT displayType FROM Users WHERE username = '{$username}'";
+    $sql = "SELECT password, employee_type FROM users WHERE username = '$username'";
     $result = $server->query($sql);
-
-    if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        if ($row["displayType"]. == 1) {
+    $row = $result->fetch_assoc();
+    if($row["password"] == $password)
+    {
+        if ($row["employee_type"] == 0) {
           header("Location: AdminMainPage.html");
+          exit;
         }
-        elseif ($row["displayType"]. == 2) {
+        elseif ($row["employee_type"] == 1) {
           header("Location: ZookeeperMainPage.html"); 
+          exit;
         }
-        elseif ($row["displayType"]. == 3) {
+        elseif ($row["employee_type"] == 2) {
           header("Location: AccountantMainPage.html"); 
+          exit;
         }
-      }
     }
+    else{
+        header("Location: login.html");
+        exit;
+    }
+}
+else{
+  header("Location: login.html");
+  exit;
+}
 
-
-  }
+}
 ?>
-<body>
-<html>
