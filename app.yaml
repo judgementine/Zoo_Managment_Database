@@ -1,11 +1,97 @@
-runtime: python27
-api_version: 1
-threadsafe: true
+runtime: php72
+ 
 
 handlers:
-- url: /
+
+- url: /animal_shop/image
+
+  static_dir: animal_shop/image
+
+- url: /animal_shop/js
+  static_dir: animal_shop/js
+  
+- url: /animal_shop/css
+  static_dir: animal_shop/css
+  
+- url: /animal_shop/plugin
+  static_dir: animal_shop/plugin
+  
+- url: /css/login.css
+  static_files: animal_shop/css/login.css
+  upload: animal_shop/css/login.css
+  
+- url: /(.+\.(gif|png|jpg|css|js|map|PNG))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg|css|js|map|PNG)$
+
+- url: /plugin/semantic/semantic.css
+  static_files: plugin/semantic/semantic.css
+  upload: plugin/semantic/semantic.css
+
+- url: /css/login.css
+  static_files: css/login.css
+  upload: css/login.css
+
+- url: /js/jquery.js
+  static_files: js/jquery.js
+  upload: js/jquery.js
+
+- url: /animal_shop/login.html
+  static_files: animal_shop/login.html
+  upload: animal_shop/login.html
+
+- url: /animal_shop/AdminMainPage.html
   static_files: animal_shop/AdminMainPage.html
   upload: animal_shop/AdminMainPage.html
 
+- url: /animal_shop/AccountantMainPage.html
+  static_files: animal_shop/AccountantMainPage.html
+  upload: animal_shop/AccountantMainPage.html
+  
+- url: /AccountantMainPage.html
+  static_files: AccountantMainPage.html
+  upload: AccountantMainPage.html
+
+- url: /animal_shop/backstage/EmployeeRegistration.html
+  static_files: animal_shop/backstage/EmployeeRegistration.html
+  upload: animal_shop/backstage/EmployeeRegistration.html
+  
+- url: /backstage/EmployeeRegistration.html
+  static_files: backstage/EmployeeRegistration.html
+  upload: backstage/EmployeeRegistration.html
+  
+- url: /EmployeeRegistration.html
+  static_files: EmployeeRegistration.html
+  upload: EmployeeRegistration.html
+
+- url: /animal_shop/ZookeeperMainPage.html
+  static_files: animal_shop/ZookeeperMainPage.html
+  upload: animal_shop/ZookeeperMainPage.html
+
+- url: /animal_shop/backstage/FinancialReport.html
+  static_files: animal_shop/backstage/FinancialReport.html
+  upload: animal_shop/backstage/FinancialReport.html
+  
+- url: /backstage/FinancialReport.html
+  static_files: backstage/FinancialReport.html
+  upload: backstage/FinancialReport.html
+
+- url: /backstage/AnimalReport.html
+  static_files: backstage/AnimalReport.html
+  upload: backstage/AnimalReport.html
+
+- url: /backstage/ShopReport.html
+  static_files: backstage/ShopReport.html
+  upload: backstage/ShopReport.html
+  
+- url: /backstage/index.html
+  static_files: backstage/index.html
+  upload: backstage/index.html
+  
 - url: /
-  static_dir: animal_shop
+  static_files: animal_shop/login.html
+  upload: animal_shop/login.html
+  
+  
+- url: /.*
+  script: auto
