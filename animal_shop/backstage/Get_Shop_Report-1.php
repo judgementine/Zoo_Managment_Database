@@ -1,5 +1,13 @@
 <?php
-session_start();
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
 ?>
 <html>
 <head>
@@ -33,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $attractionType = test_input($_POST["attractionType"]);
   $schedule = test_input($_POST["schedule"]);
 
-
+/*
   $servername = "localhost";
   $username = "username";
   $password = "password";
@@ -55,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else{
       $dname = $server->mysql_query("SELECT $dno FROM Department");
     }
+    */
     if($location=="")$location="*";
     if($shopType=="")$location="*";
     if($attractionType=="")$attractionType="*";

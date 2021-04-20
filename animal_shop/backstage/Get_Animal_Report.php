@@ -1,5 +1,13 @@
 <?php
-session_start();
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
 ?>
 <html lang="en">
 <head>
@@ -12,6 +20,7 @@ AnimalReport <?php
 $month = $quarter = $year = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //should be animal_ID i believe....
   $animalID = test_input($_POST["animalID"]);
   $Animal_species = test_input($_POST["Animal_species"]);
   $animal_DOB = test_input($_POST["animal_DOB"]);
@@ -50,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
     
-  $servername = "localhost";
+  /*$servername = "localhost";
   $username = "username";
   $password = "password";
   $dbname = "myDB";
@@ -64,8 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
   else{
-  $db =  mysql_select_db("$dbname,$server");
+  */
+  //$db =  mysql_select_db("$dbname,$server");
   
+  
+  //in MYSQL it is animal_ID... possibly change ? 
       if ($animalID != ""){
           $sql = "SELECT * FROM animal WHERE '{$animalID}', '{$Animal_species}', '{$animal_DOB}', '{$Breeding}', '{$Attractions_site}'";
       }

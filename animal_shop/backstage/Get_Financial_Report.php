@@ -1,5 +1,13 @@
 <?php
-session_start();
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
 ?>
 <html lang="en">
 <head>
@@ -33,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
     $sql = "SELECT * FROM Finance WHERE month ='{$month}', quarter = '{$quarter}', year ='{$year}'";
 
+  
+  /*
   $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
   $username = "admin";
   $password = "T3Am9Pasw0rd$";
@@ -53,8 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $server->close();
 
   }
+  */
   header("Location: GeneratedReport.html")
   exit;
+  
 }
 
 function test_input($data) {
