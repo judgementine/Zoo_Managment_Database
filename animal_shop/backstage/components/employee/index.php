@@ -1,6 +1,6 @@
 <?php
 
-require "../../conn.php";
+require "conn.php";
 
 // 判断是否登录
 @session_start();

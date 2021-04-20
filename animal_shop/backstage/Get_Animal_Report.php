@@ -15,9 +15,22 @@ if ($server->connect_error) {
     <title>Title</title>
 </head>
 <body>
-AnimalReport <?php
-// define variables and set to empty values
-$month = $quarter = $year = "";
+<?php
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    exit;
+}
+else{ 
+$animalID = "";
+$Animal_species = "";
+$animal_DOB = "";
+$Breeding = "";
+$Attractions = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   //should be animal_ID i believe....
@@ -38,17 +51,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if($animal_DOB == "")
     {
-      $animal_DOB = "*"
+      $animal_DOB = "*";
 
     }
     if($Breeding == "")
     {
-      $Breeding = "*"
+      $Breeding = "*";
 
     }
     if($Attractions_Site == "")
     {
-      $Attractions_Site = "*"
+      $Attractions_Site = "*";
 
     }
       $sql = "SELECT * FROM animal WHERE animalID ='{animalID}', Animal_species = '{$Animal_species}', animal_DOB ='{$animal_DOB}',Breeding ='{$Breeding},Attractions_Site ='{$Attractions_Site} ";
@@ -97,13 +110,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      
 
   $result = $server->mysql_query($sql);
+      $sql = "SELECT * FROM animal WHERE animalID ='$animalID', Animal_species = '$Animal_species', animal_DOB ='$animal_DOB', Breeding ='$Breeding', Attractions_Site ='$Attractions_Site' ";
+
+    $result = $server->query($sql);
   
   $server->close();
 
   }
-    header("Location: GeneratedReport.html")
-    exit;
-
 }
 
 function test_input($data) {
