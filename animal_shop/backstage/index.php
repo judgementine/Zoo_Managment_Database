@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>back-stage management</title>
-    <link rel="stylesheet" href="animal_shop/plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="../plugin/layui/css/layui.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>

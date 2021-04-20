@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         elseif ($row["employee_type"] == 2) {
           echo "<script type='text/javascript'> document.location = 'AccountantMainPage.html'; </script>";
+
+          echo "<script type='text/javascript'> document.location = 'AdminMainPage.html'; </script>";
           exit;
         }
     }
