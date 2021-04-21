@@ -15,6 +15,19 @@ if ($server->connect_error) {
     <title>Title</title>
 </head>
 <body>
+<h1>Generated Animal Report<h1>
+<table class= "striped">
+<tr class="header">
+<td>enclosure_ID</td>
+<td>feeding</td>
+<td>Animal_species </td>
+<td>Sub_species<td>
+<td>animal_DOB<td>
+<td>Health<td>
+<td>Breeding <td>
+<td>spec_instructions <td>
+<td>Attractions_site <td>
+</tr>
 <?php
 $servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
 $username = "admin";
@@ -31,6 +44,7 @@ $Animal_species = "";
 $animal_DOB = "";
 $Breeding = "";
 $Attractions = "";
+$inexhibit = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   //should be animal_ID i believe....
@@ -39,83 +53,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $animal_DOB = test_input($_POST["animal_DOB"]);
   $Breeding = test_input($_POST["Breeding"]);
     $Attractions = test_input($_POST["Attractions_Site"]);
+    $exhibit = test_input($_POST["exhibit"]);
+    $instructID="";
+    $instructSub="";
+    $instructBreeding="";
+    $instructSite="";
+    $instructexhibit="";
 
-    if ($animalID=="")
+    if ($animalID!="")
     {
-      $animalID = "*";
+      $instructID = "animalID ='$animalID',";
     }
-   if($Animal_species=="")
+    if($animal_DOB != "")
     {
-      $Animal_species == "*";
-
-    }
-    if($animal_DOB == "")
-    {
-      $animal_DOB = "*";
-
-    }
-    if($Breeding == "")
-    {
-      $Breeding = "*";
+      $instructSub = "*,Sub_Species ='$animal_DOB'";
 
     }
-    if($Attractions_Site == "")
+    if($Breeding != "")
     {
-      $Attractions_Site = "*";
+      $instructBreeding = ",Breeding ='$Breeding'";
 
     }
-      $sql = "SELECT * FROM animal WHERE animalID ='{animalID}', Animal_species = '{$Animal_species}', animal_DOB ='{$animal_DOB}',Breeding ='{$Breeding},Attractions_Site ='{$Attractions_Site} ";
-    
-    
-    
-    
-    
-    
-    
-  /*$servername = "localhost";
-  $username = "username";
-  $password = "password";
-  $dbname = "myDB";
- 
-  // Create connection
-  $server = mysql_connect($servername,$username, $password);
-  // Check connection
-  if ($server->connect_error) {
-    header("Location: AnimalReport.html");
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-  }
-  else{
-  */
-  //$db =  mysql_select_db("$dbname,$server");
-  
-  
-  //in MYSQL it is animal_ID... possibly change ? 
-      if ($animalID != ""){
-          $sql = "SELECT * FROM animal WHERE '{$animalID}', '{$Animal_species}', '{$animal_DOB}', '{$Breeding}', '{$Attractions_site}'";
-      }
-      else if($Animal_species != ""){
-          $sql = "SELECT {$Animal_species, $animal_DOB, $Breeding,Attractions_site FROM animal";
-      }
-      else if($animal_DOB != ""){
-          $sql = "SELECT $animal_DOB, $Breeding,Attractions_site FROM animal";
-      }
-      else if{
-          $sql = "SELECT $Breeding,Attractions_site FROM animal";
-          
-      }
-      else {
-          $sql = "SELECT Attractions_site FROM animal";
-      }
-     
+    if($Attractions_Site != "")
+    {
+      $instructSite = ", Attractions_Site ='$Attractions_Site'";
 
-  $result = $server->mysql_query($sql);
-      $sql = "SELECT * FROM animal WHERE animalID ='$animalID', Animal_species = '$Animal_species', animal_DOB ='$animal_DOB', Breeding ='$Breeding', Attractions_Site ='$Attractions_Site' ";
-
+    }
+    if($exhibit == true)
+    {
+        $instructexhibit= ", In_Exhibit = Yes";
+    }
+    $sql = "SELECT * FROM animal WHERE animalID ='$instructID' Animal_species = '$Animal_species' '$instructSub' '$instructBreeding' '$instructSite' '$insturctexhibit'";
+    echo "<p>'$sql'<p>";
     $result = $server->query($sql);
-  
-  $server->close();
+  if($result<=0)
+  {
+     echo "<script type='text/javascript'> document.location = 'backstage/AnimalReport.html'; </script>"; 
+  }
 
+
+    while ($row = mysql_fetch_array($result)) {
+        echo "<tr class= 'header'>";
+        echo "<td>" .$row["enclosure_ID"]."</td>";
+        echo "<td>".$row['feeding']."</td>";
+        echo "<td>".$row['Animal_species']."</td>";
+        echo "<td>".$row['Sub_species']."</td>";
+        echo "<td>".$row['animal_DOB']."</td>";
+        echo "<td>".$row['Health']."</td>";
+        echo "<td>".$row['Breeding']."</td>";
+        echo "<td>".$row['spec_instructions']."</td>";
+        echo "<td>".$row['Attractions_site']."</td>";
+        echo "</tr>";
+    }
+
+  $server->close();
   }
 }
 
@@ -127,43 +118,6 @@ function test_input($data) {
 }
 ?>
 
-<h1>Generated Animal Report<h1>
-<table class="striped">
-<tr class="header">
-    <td>enclosure_ID</td>
-    <td>feeding</td>
-    <td>Animal_species </td>
-    <td>Sub_species<td>
-    <td>animal_DOB<td>
-    <td>Health<td>
-    <td>Breeding <td>
-    <td>spec_instructions <td>
-    <td>Attractions_site <td>
-
-
-</tr>
-
-
-
-
-
-
-<?php
-    while ($row = mysql_fetch_array($result)) {
-        echo "<tr class=\"".$class."\">";
-        echo "<td>".$row[enclosure_ID]."</td>";
-        echo "<td>".$row[feeding]."</td>";
-        echo "<td>".$row[Animal_species]."</td>";
-        echo "<td>".$row[Sub_species]."</td>";
-        echo "<td>".$row[animal_DOB]."</td>";
-        echo "<td>".$row[Health]."</td>";
-        echo "<td>".$row[Breeding]."</td>";
-        echo "<td>".$row[spec_instructions]."</td>";
-        echo "<td>".$row[Attractions_site]."</td>";
-        echo "</tr>";
-    }
-
-?>
 </table>
 </body>
 </html>

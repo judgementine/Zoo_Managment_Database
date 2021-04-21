@@ -1,13 +1,5 @@
 <?php
-$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
-$username = "admin";
-$password = "T3Am9Pasw0rd$";
-$dbname = "mydb";
-$server = mysqli_connect($servername,$username, $password, $dbname);
-if ($server->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-}
+session_start();
 ?>
 <html>
 <head>
@@ -30,9 +22,23 @@ if ($server->connect_error) {
 </style>
 </head>
 <body>
-ShopReport <?php
-// define variables and set to empty values
-$month = $quarter = $year = "";
+<?php
+$servername = "zoo-database.c3gzznnyeksn.us-east-2.rds.amazonaws.com:3209";
+$username = "admin";
+$password = "T3Am9Pasw0rd$";
+$dbname = "mydb";
+$server = mysqli_connect($servername,$username, $password, $dbname);
+if ($server->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    echo "<script type='text/javascript'> document.location = 'login.html'; </script>";
+    exit;
+}
+else{
+// define variables and set to empty values$dno = test_input($_POST["dno"]);
+  $location = "";
+  $shopType = "";
+  $attractionType = "";
+  $schedule = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dno = test_input($_POST["dno"]);
@@ -41,39 +47,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $attractionType = test_input($_POST["attractionType"]);
   $schedule = test_input($_POST["schedule"]);
 
-/*
-  $servername = "localhost";
-  $username = "username";
-  $password = "password";
-  $dbname = "myDB";
 
-
-  // Create connection
-  $server = mysql_connect($servername,$username, $password);
-  // Check connection
-  if ($server->connect_error) {
-    header("Location: shopReport.html");
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-  }
-  else{
-  $db =  mysql_select_db("$dbname,$server");
-    $dname =""
+    $dname ="";
     if($dno=="")$dname="*";
     else{
-      $dname = $server->mysql_query("SELECT $dno FROM Department");
+      $result = $server->mysql_query("SELECT Name FROM Department WHERE Dnumber ='$dno'");
+      $row = $result->fetch_assoc();
+      $dname = $row["dname"];
     }
-    */
     if($location=="")$location="*";
     if($shopType=="")$location="*";
     if($attractionType=="")$attractionType="*";
     if($schedule=="")$schedule="*";
 
-    $sql1 = "SELECT  FROM Shops WHERE Dname '{$dname}', Location = '{$location}', ShopType = '{$shopType}', Schedule = '{$schedule}'"
-    $sql2 = "SELECT  FROM Attractions WHERE Dname= '{$dname}', Location = '{$location}', AttractionType = '{$attractionType}', Schedule = '{$schedule}'"
+    $sql1 = "SELECT * FROM Shops WHERE Dname '$dname', Location = '$location', ShopType = '$shopType', Schedule = '$schedule'";
+    $sql2 = "SELECT * FROM Attractions WHERE Dname= '$dname', Location = '$location', AttractionType = '$attractionType', Schedule = '$schedule'";
 
-  $result1 = $server->mysql_query($sql1);
-  $result2 = $server->mysql_query($sql2);
+    $result1 = $server->query($sql1);
+    $result2 = $server->query($sql2);
   
   $server->close();
 
@@ -149,7 +140,7 @@ function test_input($data) {
       echo "<td>".$row[Type]."</td>";
       echo "<td>".$row[Department_Name]."</td>";
       echo "<td>".$row[Location]."</td>";
-      echo "<td>".$row[Site ID]."</td>";
+      echo "<td>".$row[Site_ID]."</td>";
       echo "<td>".$row[Schedule]."</td>";
       echo "<td>".$row[number_of_sales]."</td>";
       echo "<td>".$row[price_of_admittance]."</td>";

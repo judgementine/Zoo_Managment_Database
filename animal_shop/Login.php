@@ -15,7 +15,7 @@ $employeeType = ""; // 1:Admin 2:Zookeeper 3:Acccountant
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $sql = "SELECT password, employee_type FROM users WHERE username = '$username'";
+    $sql = "SELECT password, employee_type FROM Users WHERE username = '$username'";
     $result = $server->query($sql);
     $row = $result->fetch_assoc();
     if($row["password"] == $password)
@@ -30,18 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         elseif ($row["employee_type"] == 2) {
           echo "<script type='text/javascript'> document.location = 'AccountantMainPage.html'; </script>";
-
-          echo "<script type='text/javascript'> document.location = 'AdminMainPage.html'; </script>";
           exit;
         }
     }
     else{
-        header("Location: login.html");
-        exit;
+          echo "<script type='text/javascript'> document.location = 'login.html'; </script>";
+          exit;
     }
 }
 else{
-  header("Location: login.html");
+  echo "<script type='text/javascript'> document.location = 'login.html'; </script>";
   exit;
 }
 

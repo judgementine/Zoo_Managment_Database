@@ -22,7 +22,6 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/ServerConnection.php':
         require 'animal_shop/ServerConnection.php';
         break;
-        
     case '/animal_shop/login.php':
         require 'animal_shop/login.php';
         break;
@@ -130,6 +129,21 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         break;
     case 'shopsAddDo.php':
         require 'animal_shop/backstage/components/employee/employeeAddDo.php';
+        break;
+    case 'image/jaguars-zoo.jpg':
+        require 'animal_shop/image/jaguars-zoo.jpg';
+        break;
+    case 'image/couglogo.jpg':
+        require 'animal_shop/image/couglogo.jpg';
+        break;
+    case 'image/monkeys.jpg':
+        require 'animal_shop/backstage/image/monkeys.jpg';
+        break;
+    case 'image/elephants.jpg':
+        require 'animal_shop/backstage/image/elephants.jpg';
+        break;
+    case 'image/giraffes.jpg':
+        require 'animal_shop/backstage/image/giraffes.jpg';
         break;
     default:
         http_response_code(404);

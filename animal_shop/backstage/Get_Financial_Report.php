@@ -36,49 +36,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $month = test_input($_POST["month"]);
   $quarter = test_input($_POST["quarter"]);
   $year = test_input($_POST["year"]);
-
+    $Imonth ="";
+    $Iquarter = "";
+    $Iyear = "";
   
-  if ($month=="")
+  if ($month!="")
   {
-    $month = "*";
+    $Imonth = "month ='$month',";
   }
  if($quarter=="")
   {
-    $quarter == "*";
+    $quarter == "quarter = '$quarter',";
 
   }
-  if($year == "")
+
+$sql = "SELECT * FROM Finance WHERE '$Imonth' '$Iquarter' year ='$year'";
+    $result = $server->query($sql);
+  if($result<=0)
   {
-    $year = "*";
-
+     echo "<script type='text/javascript'> document.location = 'backstage/FinancialReport.html'; </script>"; 
   }
-$sql = "SELECT * FROM Finance WHERE month ='$month', quarter = '$quarter', year ='$year'";
-
-  
-  /*
-  $servername = "zoo-database.ccvdldxxabcr.us-east-2.rds.amazonaws.com";
-  $username = "admin";
-  $password = "T3Am9Pasw0rd$";
-  $dbname = "myDB";
- 
-  // Create connection
-  $server = mysql_connect($servername,$username, $password);
-  // Check connection
-  if ($server->connect_error) {
-    header("Location: FinancialReport.html");
-    die("Connection failed: " . $conn->connect_error);
-    exit;
-  }
-  else{
-  $db =  mysql_select_db("$dbname,$server");
-  $result = $server->mysql_query($sql);
-  
   $server->close();
-
-  }
-  */
-  header("Location: GeneratedReport.html")
-  exit;
   
 }
 

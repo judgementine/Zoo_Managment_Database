@@ -48,23 +48,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $schedule = test_input($_POST["schedule"]);
 
 
-    $dname ="";
-    if($dno=="")$dname="*";
-    else{
+    $Idno="";
+    $Ilocation="";
+    $IshopType="";
+    $IattractionType="";
+    $Ischedule = "";
+    $count = 0;
+    if($dno!="")
+    {
       $result = $server->mysql_query("SELECT Name FROM Department WHERE Dnumber ='$dno'");
       $row = $result->fetch_assoc();
       $dname = $row["dname"];
+      $Idno= "Dname = '$dname'";
+      $count = 1;
     }
-    if($location=="")$location="*";
-    if($shopType=="")$location="*";
-    if($attractionType=="")$attractionType="*";
-    if($schedule=="")$schedule="*";
+    if($location!="")
+    {
+        if($count ==1) $Ilocation = ", Location = '$location'";
+        else {
+            $Ilocation = "Location = '$location'";
+            $count=1;
+        }
+    }
+    if($shopType!="")
+    {
+        if($count ==1) $IshopType = ", shopType = '$shopType'";
+        else {
+            $IshopType = "shopType = '$shopType'";
+            $count=1;
+        }
+    }
+    if($attractionType!="")
+    {
+        if($count ==1) $IattractionType = ", attractionType = '$attractionType'";
+        else {
+            $IattractionType = "attractionType = '$attractionType'";
+            $count=1;
+        }
+    }
+    if($schedule!="")
+    {
+        if($count ==1) $Ischedule = ", schedule = '$schedule'";
+        else {
+            $Ischedule = "schedule = '$schedule'";
+            $count=1;
+        }
+    }
 
-    $sql1 = "SELECT * FROM Shops WHERE Dname '$dname', Location = '$location', ShopType = '$shopType', Schedule = '$schedule'";
-    $sql2 = "SELECT * FROM Attractions WHERE Dname= '$dname', Location = '$location', AttractionType = '$attractionType', Schedule = '$schedule'";
+    if($count == 0)
+    {
+    $sql1 = "SELECT * FROM Shops";
+    $sql2 = "SELECT * FROM Attractions";
+
+    }
+    else{
+    $sql1 = "SELECT * FROM Shops WHERE '$Idno' '$IshopType' '$Ischedule'";
+    $sql2 = "SELECT * FROM Attractions WHERE '$Idno' '$Ilocation' '$IattractionType' '$Ischedule'";
+    }
 
     $result1 = $server->query($sql1);
+  if($result1<=0)
+  {
+     echo "<script type='text/javascript'> document.location = 'backstage/ShopReport.html'; </script>"; 
+  }
     $result2 = $server->query($sql2);
+  if($result2<=0)
+  {
+     echo "<script type='text/javascript'> document.location = 'backstage/ShopReport.html'; </script>"; 
+  }
   
   $server->close();
 
@@ -91,7 +142,6 @@ function test_input($data) {
     <td>Name</td>
     <td>Type</td>
     <td>Department</td>
-    <td>Location</td>
     <td>Schedule</td>
     <td>Items</td>
     <td>Item Name<td>
@@ -102,15 +152,14 @@ function test_input($data) {
 <?php
    while ($row = mysql_fetch_array($result1)) {
       echo "<tr class=\"".$class."\">";
-      echo "<td>".$row[Name]."</td>";
-      echo "<td>".$row[Type]."</td>";
-      echo "<td>".$row[Department_Name]."</td>";
-      echo "<td>".$row[Location]."</td>";
-      echo "<td>".$row[Schedule]."</td>";
-      echo "<td>".$row[items]."</td>";
-      echo "<td>".$row[item_name]."</td>";
-      echo "<td>".$row[item_price]."</td>";
-      echo "<td>".$row[number_of_sales]."</td>";
+      echo "<td>".$row['Name']."</td>";
+      echo "<td>".$row['Type']."</td>";
+      echo "<td>".$row['Department_Name']."</td>";
+      echo "<td>".$row['Schedule']."</td>";
+      echo "<td>".$row['items']."</td>";
+      echo "<td>".$row['item_name']."</td>";
+      echo "<td>".$row['item_price']."</td>";
+      echo "<td>".$row['number_of_sales']."</td>";
 
    }
 
@@ -136,8 +185,8 @@ function test_input($data) {
 <?php
    while ($row = mysql_fetch_array($result2)) {
       echo "<tr class=\"".$class."\">";
-      echo "<td>".$row[Name]."</td>";
-      echo "<td>".$row[Type]."</td>";
+      echo "<td>".$row['Name']."</td>";
+      echo "<td>".$row['Type']."</td>";
       echo "<td>".$row[Department_Name]."</td>";
       echo "<td>".$row[Location]."</td>";
       echo "<td>".$row[Site_ID]."</td>";
