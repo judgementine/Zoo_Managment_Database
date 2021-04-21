@@ -28,6 +28,10 @@ handlers:
   upload: animal_shop/backstage/image/giraffes.jpg
 
   
+- url: /image/jaguars-zoo.jpg
+  static_files: animal_shop/image/jaguars-zoo.jpg
+  upload: animal_shop/image/jaguars-zoo.jpg
+
 - url: /image/couglogo.jpg
   static_files: animal_shop/image/couglogo.jpg
   upload: animal_shop/image/couglogo.jpg
